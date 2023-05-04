@@ -15,17 +15,8 @@ struct NodoTarea {
     struct NodoTarea* siguiente;
 };
 
-// Función para crear una nueva tarea
-struct Tarea* NuevaTarea(int id, char* desc, int duracion) {
-    struct Tarea* tarea = (struct Tarea*)malloc(sizeof(struct Tarea));
-    tarea->TareaID = id;
-    tarea->Descripcion = (char*)malloc(sizeof(char)*(strlen(desc)+1));
-    strcpy(tarea->Descripcion, desc);
-    tarea->Duracion = duracion;
-    return tarea;
-}
-
 //Funciones
+struct Tarea* NuevaTarea(int id, char* desc, int duracion);
 void ImprimirTarea(struct Tarea* tarea);
 struct NodoTarea* NuevoNodoTarea(struct Tarea* tarea);
 void AgregarTarea(struct NodoTarea** cabeza, struct Tarea* tarea);
@@ -79,6 +70,16 @@ int main() {
     }
     free(tareas);
     return 0;
+}
+
+// Función para crear una nueva tarea
+struct Tarea* NuevaTarea(int id, char* desc, int duracion) {
+    struct Tarea* tarea = (struct Tarea*)malloc(sizeof(struct Tarea));
+    tarea->TareaID = id;
+    tarea->Descripcion = (char*)malloc(sizeof(char)*(strlen(desc)+1));
+    strcpy(tarea->Descripcion, desc);
+    tarea->Duracion = duracion;
+    return tarea;
 }
 
 // Función para imprimir una tarea
